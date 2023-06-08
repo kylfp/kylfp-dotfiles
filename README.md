@@ -3,7 +3,7 @@
 Nvim confiuration by fattyre\
 
 Plugin Manager - lazy.nvim\
-LSP Manager - mason.nvim\
+LSP Manager - mason.nvim
 
 Plugin List:\
   General -\

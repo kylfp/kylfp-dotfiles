@@ -1,9 +1,9 @@
 # nvim-dotfiles
 
-Nvim confiuration by fattyre
+Nvim confiuration by fattyre\
 
-Plugin Manager - lazy.nvim
-LSP Manager - mason.nvim
+Plugin Manager - lazy.nvim\
+LSP Manager - mason.nvim\
 
 Plugin List:\
   General -\
@@ -47,3 +47,7 @@ Plugin List:\
     gbprod/nord.nvim\
     folke/tokyonight.nvim\
     catppuccin/nvim\
+1. Item 1
+2. Item 2
+    * Item 2a
+    * Item 2b

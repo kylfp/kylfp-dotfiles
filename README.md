@@ -1,6 +1,6 @@
 # nvim-dotfiles
 
-Nvim confiuration by fattyre\
+Nvim confiuration by fattyre
 
 Plugin Manager - lazy.nvim\
 LSP Manager - mason.nvim

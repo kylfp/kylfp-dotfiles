@@ -1,0 +1,5 @@
+require('mini.pairs').setup()
+require('mini.starter').setup()
+--require('mini.completion').setup()
+require('mini.cursorword').setup()
+require('mini.surround').setup()

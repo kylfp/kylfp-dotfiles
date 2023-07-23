@@ -1,3 +1,1 @@
-# nvim-dotfiles
-
-Nvim confiuration by kylfp
+# kylfp-dotfiles

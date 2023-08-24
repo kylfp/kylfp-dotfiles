@@ -26,6 +26,7 @@ require("lazy").setup({
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
     },
+
     ----------------------------------------------------------------------------
     -- Completion
     'hrsh7th/nvim-cmp',
@@ -35,21 +36,30 @@ require("lazy").setup({
     'hrsh7th/cmp-cmdline',        -- CMD Line completions
     'saadparwaiz1/cmp_luasnip',   -- snippet completions
     'hrsh7th/cmp-nvim-lua',       -- Nvim config completions
+
     ----------------------------------------------------------------------------
     -- Snippets
     'L3MON4D3/LuaSnip',                 -- snippet engine
     'rafamadriz/friendly-snippets',     -- VS Code-like completions
+
     ----------------------------------------------------------------------------
-    -- WhichKey 
+    -- Greeter
     {
-        "folke/which-key.nvim",  -- Popup keybinding helper
-        lazy = true,
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end
+        'goolord/alpha-nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
 
+    ----------------------------------------------------------------------------
+    -- -- WhichKey
+    -- {
+    --     "folke/which-key.nvim",  -- Popup keybinding helper
+    --     lazy = true,
+    --     init = function()
+    --         vim.o.timeout = true
+    --         vim.o.timeoutlen = 300
+    --     end
+    -- },
+    --
     ----------------------------------------------------------------------------
     -- Telescope
     {
@@ -126,4 +136,6 @@ require("lazy").setup({
     ----------------------------------------------------------------------------
     -- Colorscheme
     'folke/tokyonight.nvim', -- Tokyo Night
+    'ellisonleao/gruvbox.nvim', -- Gruvbox
+    'navarasu/onedark.nvim' --OneDark
 })

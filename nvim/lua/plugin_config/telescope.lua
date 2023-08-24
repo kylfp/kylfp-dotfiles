@@ -30,6 +30,3 @@ require('telescope').setup{
   }
 }
 ]]
-
-require'telescope.builtin'.planets{}
-:nnoremap <Leader>pp :lua require'telescope.builtin'.planets{}

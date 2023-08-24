@@ -68,14 +68,14 @@ keymap("n", "<leader>fb", ":Telescope buffers prompt_prefix=󱦞 <cr>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep prompt_prefix=󰭎 <cr>", opts)
 keymap("n", "<leader>bf", ":Telescope current_buffer_fuzzy_find prompt_prefix= <cr>", opts)
 
--- FTerm 
+-- FTerm
 keymap('n', '<leader>t', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 keymap('t', '<leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 
 -- Highlight Colors
 keymap('n', '<leader>hc', ':HighlightColorsToggle<CR>', opts)
 
--- BarBar 
+-- BarBar
 -- Move to previous/next
 keymap('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 keymap('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)

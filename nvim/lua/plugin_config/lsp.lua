@@ -2,7 +2,8 @@ require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
-        "jedi_language_server"
+        "pylsp",
+        "jdtls"
     }
 })
 
@@ -30,5 +31,21 @@ require("lspconfig").lua_ls.setup {
 }
 
 require("lspconfig").pylsp.setup {
+    on_attach = on_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    ignore = {
+                        -- List Python Errors Codes
+                    },
+                    maxLineLength = 100
+                }
+            }
+        }
+    }
+}
+
+require("lspconfig").jdtls.setup {
     on_attach = on_attach
 }

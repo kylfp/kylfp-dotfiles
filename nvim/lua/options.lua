@@ -21,7 +21,7 @@ vim.opt.cursorline = true         -- highlight current line
 vim.opt.signcolumn = "yes"        -- always show the sign column, other it would shift the text each time
 vim.opt.wrap = false              -- get rid of line wrapping
 vim.opt.colorcolumn = "80"
-vim.opt.guifont = "JetBrainsMono_Nerd_Font_Medium:h17" -- font used in graphical neovim applications
+vim.opt.guifont = "BlexMono_Nerd_Font_Medium:h17" -- font used in graphical neovim applications
 
 --Line Numbers
 vim.opt.number = true             -- show numbered lines
@@ -29,5 +29,5 @@ vim.opt.relativenumber = true     -- set relative numbered lines
 vim.opt.numberwidth = 4           -- set number column width to 4
 
 --Scroll before edge of terminal
-vim.opt.scrolloff = 8             -- vertical Scroll before edge
-vim.opt.sidescrolloff = 8         -- horizontal scroll before edge
+vim.opt.scrolloff = 30            -- vertical Scroll before edge
+vim.opt.sidescrolloff = 15        -- horizontal scroll before edge

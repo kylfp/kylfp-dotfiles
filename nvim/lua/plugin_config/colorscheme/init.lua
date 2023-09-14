@@ -1,0 +1,6 @@
+require "plugin_config.colorscheme.colorbuddy"
+-- require "plugin_config.colorscheme.vscodecolor"
+-- require "plugin_config.colorscheme.tokyonight"
+-- require "plugin_config.colorscheme.onedark"
+-- require "plugin_config.colorscheme.catppuccin"
+-- require "plugin_config.colorscheme.colorscheme"

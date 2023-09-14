@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     --Plugins Here
+
     ----------------------------------------------------------------------------
     -- General Useful Plugins
     'nvim-lua/popup.nvim',
@@ -22,9 +23,9 @@ require("lazy").setup({
     ----------------------------------------------------------------------------
     -- LSP
     {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',            -- LSP Manager
+        'williamboman/mason-lspconfig.nvim',  -- Mason -> LSP Config
+        'neovim/nvim-lspconfig',              -- LSP Configuration Manager
     },
 
     ----------------------------------------------------------------------------
@@ -50,17 +51,6 @@ require("lazy").setup({
     },
 
     ----------------------------------------------------------------------------
-    -- -- WhichKey
-    -- {
-    --     "folke/which-key.nvim",  -- Popup keybinding helper
-    --     lazy = true,
-    --     init = function()
-    --         vim.o.timeout = true
-    --         vim.o.timeoutlen = 300
-    --     end
-    -- },
-    --
-    ----------------------------------------------------------------------------
     -- Telescope
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',  -- Fuzzy Finder
@@ -77,7 +67,7 @@ require("lazy").setup({
 
     ----------------------------------------------------------------------------
     -- Integrated Terminal
-    'numToStr/FTerm.nvim',  -- Integraated floating terminal
+    'numToStr/FTerm.nvim',  -- Integrated floating terminal
 
     ----------------------------------------------------------------------------
     -- Syntax Highlighting
@@ -88,7 +78,7 @@ require("lazy").setup({
 
     ----------------------------------------------------------------------------
     -- Commenting Manager
-    'numToStr/Comment.nvim', -- Easy block commenting
+    'numToStr/Comment.nvim', -- Block and Line Commenting
 
     ----------------------------------------------------------------------------
     -- Mini
@@ -96,46 +86,30 @@ require("lazy").setup({
         'echasnovski/mini.nvim', -- A library of helpful plugins (list below)
         version = false
     },
-    -- Currently implemented:
-    --     Pairs (autopairing)
-    --     Starter (startpage)
-    --     Cursorword (highlight words under cursor)
-    --     Surround (surround word with specified character)
     ----------------------------------------------------------------------------
     -- Indentation Line Guides
     'lucastavaresa/simpleIndentGuides.nvim',
 
     ----------------------------------------------------------------------------
-    -- Bufferline
-    {'romgrk/barbar.nvim',
-        dependencies = {
-            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-            'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-        },
-        init = function() vim.g.barbar_auto_setup = false end,
-        opts = {
-          -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-          -- animation = true,
-          -- insert_at_start = true,
-          -- …etc.
-        },
-        version = '^1.0.0', -- optional: only update when a new 1.x version is released
-    },
+    -- Status Line
+    'nvim-lualine/lualine.nvim', -- Status line
 
     ----------------------------------------------------------------------------
-    -- Status Line
-    'tamton-aquib/staline.nvim', -- Staline
-
+    -- Buffer Deletion
+    'ojroques/nvim-bufdel',
     ----------------------------------------------------------------------------
     -- Hex Color Highlighting
     {
-        'brenoprata10/nvim-highlight-colors', -- Hex Color highlighter
+        'brenoprata10/nvim-highlight-colors', -- Color highlighter
         lazy = true,
     },
 
     ----------------------------------------------------------------------------
     -- Colorscheme
-    'folke/tokyonight.nvim', -- Tokyo Night
-    'ellisonleao/gruvbox.nvim', -- Gruvbox
-    'navarasu/onedark.nvim' --OneDark
+    'tjdevries/colorbuddy.nvim', -- Custom Color Scheme
+    -- 'Mofiqul/vscode.nvim', --VSCode
+    -- 'folke/tokyonight.nvim', -- Tokyo Night
+    -- 'ellisonleao/gruvbox.nvim', -- Gruvbox
+    -- 'navarasu/onedark.nvim', --OneDark
+    -- 'catppuccin/nvim' --Catppuccin
 })

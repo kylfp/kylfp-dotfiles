@@ -49,3 +49,7 @@ require("lspconfig").pylsp.setup {
 require("lspconfig").jdtls.setup {
     on_attach = on_attach
 }
+
+require("lspconfig").cssls.setup {
+
+}

@@ -1,0 +1,128 @@
+@import "frappe.css";
+
+* {
+    all: initial;
+    font-family: BlexMono Nerd Font;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window > box {
+    margin-top: 20px;
+    border-radius: 18px;
+    border: double 4px transparent;
+    background-image: linear-gradient(@base, @base),
+                      linear-gradient(45deg, @blue, @green);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+#custom-intel-cpu-temp,
+#custom-amd-gpu-temp,
+#memory,
+#network,
+#pulseaudio,
+#clock,
+#tray {
+    background-color: @text;
+    color: @base;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    border-radius: 10px;
+
+    border-bottom-width: 5px;
+    border-bottom-color: @base;
+    border-bottom-style: solid;
+
+    border-left-width: 5px;
+    border-left-color: @base;
+    border-left-style: solid;
+}
+
+#custom-intel-cpu-temp {
+    background-color: @red;
+    border-bottom-color: @darkred;
+    border-left-color: @darkred;
+}
+
+#custom-amd-gpu-temp {
+    background-color: @peach;
+    border-bottom-color: @darkpeach;
+    border-left-color: @darkpeach;
+}
+
+#memory {
+    background-color: @yellow;
+    border-bottom-color: @darkyellow;
+    border-left-color: @darkyellow;
+}
+
+#network {
+    background-color: @blue;
+    border-bottom-color: @darkblue;
+    border-left-color: @darkblue;
+}
+
+#pulseaudio {
+    background-color: @lavender;
+    border-bottom-color: @darklavender;
+    border-left-color: @darklavender;
+}
+
+#clock {
+    background-color: @mauve;
+    border-bottom-color: @darkmauve;
+    border-left-color: @darkmauve;
+}
+
+#tray {
+    background-color: @pink;
+    border-bottom-color: @darkpink;
+    border-left-color: @darkpink;
+}
+
+#workspaces {
+    background-color: @base;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+#workspaces button {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+
+    background-color: @blue;
+
+    border-radius: 10px;
+
+    border-bottom-width: 5px;
+    border-bottom-color: @darkblue;
+    border-bottom-style: solid;
+
+    border-left-width: 5px;
+    border-left-color: @darkblue;
+    border-left-style: solid;
+}
+
+#workspaces button.active {
+    background-color: @red;
+    border-left-color: @darkred;
+    border-bottom-color: @darkred;
+}
+
+#workspaces button.persistent {
+    background-color: @base;
+    border-left-color: @base;
+    border-bottom-color: @base;
+}

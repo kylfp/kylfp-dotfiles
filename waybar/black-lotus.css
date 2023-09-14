@@ -1,0 +1,39 @@
+/*
+*
+* Black Lotus Palette
+*
+*/
+
+@define-color bg      #121212;
+@define-color bgalt   #191919;
+
+@define-color fg      #c8c8c8;
+@define-color fgalt   #ababab;
+
+@define-color black   #211f21;
+@define-color red     #7b3e59;
+@define-color green   #798347;
+@define-color yellow  #ae9f76;
+@define-color blue    #3f6cad;
+@define-color magenta #553976;
+@define-color cyan    #416680;
+@define-color white   #adc4e3;
+
+@define-color bright-black   #302e31;
+@define-color bright-red     #a55377;
+@define-color bright-green   #c8cc86;
+@define-color bright-yellow  #d9c793;
+@define-color bright-blue    #2f88ff;
+@define-color bright-magenta #8853c7;
+@define-color bright-cyan    #6dabd6;
+@define-color bright-white   #dcefff;
+
+/* Gradient */
+@define-color gradient1 #2f88ff;
+@define-color gradient2 #3c81f7;
+@define-color gradient3 #4f77eb;
+@define-color gradient4 #616ce0;
+@define-color gradient5 #6d64d8;
+@define-color gradient6 #775ed2;
+@define-color gradient7 #8257cb;
+@define-color gradient8 #8853c7;

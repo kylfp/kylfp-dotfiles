@@ -1,0 +1,77 @@
+@import "frappe.css";
+
+* {
+    /* all: initial; */
+    font-family: BlexMono Nerd Font;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window > box {
+    margin-top: 5px;
+    border-radius: 15px;
+    border: 4px;
+    border-style: solid;
+
+    background-color: @base;
+    border-color: @yellow;
+}
+
+#custom-intel-cpu-temp,
+#custom-amd-gpu-temp,
+#memory,
+#network,
+#pulseaudio,
+#clock,
+#tray,
+#workspaces {
+    background-color: @crust;
+    color: @text;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    border-radius: 12px;
+    border-width: 2px;
+    border-color: @yellow;
+    border-style: solid;
+}
+
+#workspaces {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+#workspaces button {
+    /* padding-right: 10px; */
+    /* padding-left: 10px; */
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    border-radius: 8px;
+    background-color: @text;
+    color: @crust;
+
+    border: none;
+}
+
+#workspaces button.persistent {
+    color: @text;
+    background-color: @crust;
+}
+
+#workspaces button.active {
+    color: @crust;
+    background-color: @yellow;
+}

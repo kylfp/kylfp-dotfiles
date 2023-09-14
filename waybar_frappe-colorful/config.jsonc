@@ -3,48 +3,42 @@
     "output": "DP-2",
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 50, // Waybar height (to be removed for auto height)
-    "width": 2537, // Waybar width
+    "width": 2520, // Waybar width
     "spacing": 10, // Gaps between modules (4px)
 
     // Choose the order of the modules
     "modules-left": ["custom/space", "custom/intel-cpu-temp", "custom/amd-gpu-temp", "memory"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-center": ["wlr/workspaces"],
     "modules-right": ["network", "pulseaudio", "clock", "tray", "custom/space"],
 
     // Modules configuration
-    "hyprland/workspaces": {
-        "sort-by-number": true,
-        // "format":"{name}|{icon}",
-        "format":"{icon}",
+    "wlr/workspaces":{
+        // "sort-by-number": true,
+        "format":"{name}|{icon}",
         "on-click": "activate",
         "format-icons": {
-            // "1": " ",
-            // "2": " ",
-            // "3": " ",
-            // "4": " ",
-            // "5": "󱎓 ",
-            // "6": "󰈹 ",
-            // "7": "󱓷 ",
-            // "8": "󱓷 ",
-            // "9": " ",
-            // "10": "󰙯 "
             "1": " ",
-            "2": " ",
-            "3": " ",
-            "4": " ",
-            "5": " "
+            "2": " ",
+            "3": " ",
+            "4": " ",
+            "5": "󱎓",
+            "6": "󰈹 ",
+            "7": "󱓷 ",
+            "8": "󱓷 ",
+            "9": " ",
+            "10": "󰙯 "
         },
         "persistent_workspaces":{
             "1":["DP-2"],
             "2":["DP-2"],
             "3":["DP-2"],
             "4":["DP-2"],
-            "5":["DP-2"]// ,
-            // "6":["HDMI-A-3"],
-            // "7":["HDMI-A-3"],
-            // "8":["HDMI-A-3"],
-            // "9":["HDMI-A-3"],
-            // "10":["HDMI-A-3"]
+            "5":["DP-2"],
+            "6":["HDMI-A-3"],
+            "7":["HDMI-A-3"],
+            "8":["HDMI-A-3"],
+            "9":["HDMI-A-3"],
+            "10":["HDMI-A-3"]
         }
     },
     "tray": {
@@ -52,30 +46,30 @@
         "spacing": 10
     },
     "clock": {
-        "format": "  {:%H:%M:%S 󰃭 %d-%b-%C} ",
+        "format": " {:%H:%M:%S 󰃭 %d-%b-%C}",
         "interval": 1
     },
     "memory": {
-        "format": " RAM {used:0.1f}G/{total:0.1f}G "
+        "format": "RAM {used:0.1f}G/{total:0.1f}G"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "   {essid} ",
-        "format-ethernet": " 󰈁 {ipaddr}/{cidr} ",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈁 {ipaddr}/{cidr}",
         "tooltip-format": "Strenth: {signalStrength}%",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": " 󰈂 󱚼  ",
-        "format-alt": " {ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "󰈂 󱚼 ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-double-click": "nm-connection-editor"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": " {icon}{volume}% {format_source} ",
-        "format-muted": " 󰝟 {format_source} ",
-        "format-bluetooth": " {icon}{volume}% {format_source} ",
-        "format-bluetooth-muted": " 󰝟 {format_source} ",
-        "format-source": "  {volume}% ",
-        "format-source-muted": "   ",
+        "format": "{icon}{volume}% {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-bluetooth": "{icon}{volume}% {format_source}",
+        "format-bluetooth-muted": "󰝟 {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": " ",
             "hands-free": "󱆏 ",
@@ -89,22 +83,21 @@
     },
     "custom/amd-gpu-temp": {
         "exec":"~/.config/waybar/scripts/amd-gpu-temp.sh",
-        "format": " GPU {} ",
+        "format": "GPU {}",
         "interval": 2,
         "on-click": "htop"
     },
     "custom/intel-cpu-temp": {
         "exec":"~/.config/waybar/scripts/intel-cpu-temp.sh",
-        "format": " CPU {} ",
+        "format": "CPU {}",
         "interval": 2,
         "on-click": "htop"
     },
     "custom/space": {
         "format": " "
     }
-}] // ,
+},
 
-/*
 {
     "layer": "top", // Waybar at top layer
     "output": "HDMI-A-3",
@@ -119,7 +112,7 @@
     "modules-right": ["network", "pulseaudio", "clock", "tray", "custom/space"],
 
     // Modules configuration
-    "hyprland/workspaces":{
+    "wlr/workspaces":{
         "sort-by-number": true,
         "format":"{name}|{icon}",
         "on-click": "activate",
@@ -153,29 +146,29 @@
         "spacing": 10
     },
     "clock": {
-        "format": "  {:%H:%M:%S 󰃭 %d-%b-%C} ",
+        "format": " {:%H:%M:%S 󰃭 %d-%b-%C}",
         "interval": 1
     },
     "memory": {
-        "format": " RAM {used:0.1f}G/{total:0.1f}G "
+        "format": "RAM {used:0.1f}G/{total:0.1f}G"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "   {essid} ",
-        "format-ethernet": " 󰈁 {ipaddr}/{cidr} ",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈁 {ipaddr}/{cidr}",
         "tooltip-format": "Strenth: {signalStrength}%",
-        "format-linked": " {ifname} (No IP)  ",
-        "format-disconnected": " 󰈂 󱚼  ",
-        "format-alt": " {ifname}: {ipaddr}/{cidr} "
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰈂 󱚼 ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": " {icon}{volume}% {format_source} ",
-        "format-bluetooth": " {volume}% {icon} {format_source} ",
-        "format-bluetooth-muted": "  {icon} {format_source} ",
-        "format-muted": " 󰝟 {format_source} ",
-        "format-source": "  {volume}% ",
-        "format-source-muted": "   ",
+        "format": "{icon}{volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
         "format-icons": {
             "headphone": " ",
             "hands-free": "",
@@ -189,16 +182,15 @@
     },
     "custom/amd-gpu-temp": {
         "exec":"~/.config/waybar/scripts/amd-gpu-temp.sh",
-        "format": " GPU {} ",
+        "format": "GPU {}",
         "interval": 2
     },
     "custom/intel-cpu-temp": {
         "exec":"~/.config/waybar/scripts/intel-cpu-temp.sh",
-        "format": " CPU {} ",
+        "format": "CPU {}",
         "interval": 2
     },
     "custom/space": {
         "format": " "
     }
 }]
-*/

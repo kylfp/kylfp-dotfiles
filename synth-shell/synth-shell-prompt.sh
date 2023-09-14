@@ -418,7 +418,7 @@ shortenPath()
 	local path=$1
 	local max_length=$2
 	local default_max_length=25
-	local trunc_symbol=".."
+	local trunc_symbol=${3:-"…"}
     ## CHECK PARAMETERS AND INIT
 	if   [ -z "$path" ]; then
 		echo ""
@@ -428,7 +428,7 @@ shortenPath()
 	fi
 	## CLEANUP PATH
 	## Replace HOME with ~ for the current user, similar to sed.
-	local path=${path/#$HOME/\~}
+	local path=${path/#$HOME/\ }
 	## GET PRINT LENGHT
 	## - Get curred directory (last folder in path) to get its length (num characters).
 	## - Determine the actual max length we will use to truncate, choosing between either
@@ -498,48 +498,42 @@ shortenPath()
 ##   or search something like "bash 256 color codes" on the internet.
 ##
 ##==============================================================================
+##==============================================================================
+## MAIN FORMAT
+##==============================================================================
 format="USER HOST PWD GIT PYENV TF KUBE"
+separator_char='\uE0B0'           # Separation character, '\uE0B0'=triangle
+separator_padding_left=''         # Add char or string to the left of the separator
+separator_padding_right=''        # Add char or string to the right of the separator
+segment_padding=' '               # Add char or string around segment text
+enable_vertical_padding=true      # Add extra new line over prompt
+enable_command_on_new_line=false  # Add new line between prompt and command
+##==============================================================================
+## USER
+##==============================================================================
 font_color_user="white"
 background_user="blue"
 texteffect_user="bold"
+##==============================================================================
+## HOST
+##==============================================================================
 font_color_host="white"
 background_host="light-blue"
 texteffect_host="bold"
+##==============================================================================
+## PWD (working dir)
+##==============================================================================
 font_color_pwd="dark-gray"
 background_pwd="white"
 texteffect_pwd="bold"
-font_color_git="light-gray"
-background_git="dark-gray"
-texteffect_git="bold"
-font_color_pyenv="white"
-background_pyenv="blue"
-texteffect_pyenv="bold"
-font_color_kube="white"
-background_kube="purple"
-texteffect_kube="bold"
-font_color_tf="purple"
-background_tf="light-purple"
-texteffect_tf="bold"
-font_color_clock="white"
-background_clock="light-blue"
-texteffect_clock="bold"
-font_color_input="45"
-background_input="none"
-texteffect_input="bold"
-##==============================================================================
-## BEHAVIOR
-##==============================================================================
-separator_char='\uE0B0'         # Separation character, '\uE0B0'=triangle
-separator_padding_left=''       #
-separator_padding_right=''      #
-prompt_horizontal_padding=''    #
-prompt_final_padding=''         #
-segment_padding=' '             #
-enable_vertical_padding=true    # Add extra new line over prompt
-max_pwd_char="20"
+max_pwd_char="25"
+pwd_trunc_symbol="…"
 ##==============================================================================
 ## GIT
 ##==============================================================================
+font_color_git="light-gray"
+background_git="dark-gray"
+texteffect_git="bold"
 git_symbol_synced=''
 git_symbol_unpushed=' ▲'
 git_symbol_unpulled=' ▼'
@@ -549,6 +543,37 @@ git_symbol_dirty_unpushed=' ◔ △'
 git_symbol_dirty_unpulled=' ◔ ▽'
 git_symbol_dirty_unpushedunpulled=' ◔ ◇'
 git_update_period_minutes=15	# Use -1 to disable automatic updates
+##==============================================================================
+## PYENV
+##==============================================================================
+font_color_pyenv="white"
+background_pyenv="blue"
+texteffect_pyenv="bold"
+##==============================================================================
+## KUBERNETES
+##==============================================================================
+font_color_kube="white"
+background_kube="purple"
+texteffect_kube="bold"
+##==============================================================================
+## TERRAFORM WORKSPACE
+##==============================================================================
+font_color_tf="purple"
+background_tf="light-purple"
+texteffect_tf="bold"
+##==============================================================================
+## CLOCK
+##==============================================================================
+font_color_clock="white"
+background_clock="light-blue"
+texteffect_clock="bold"
+clock_format="%H:%M"
+##==============================================================================
+## INPUT (user typed command)
+##==============================================================================
+font_color_input="45"
+background_input="none"
+texteffect_input="bold"
 #!/bin/bash
 ##  +-----------------------------------+-----------------------------------+
 ##  |                                                                       |
@@ -688,8 +713,10 @@ getGitBranch()
 			else
 				local symbol=$SSP_GIT_SYNCED
 			fi
+            ## GET TAG (if any)
+            [[ -n "$(git tag --points-at HEAD)" ]] && local readonly tag=" $(git tag --points-at HEAD)" || local readonly tag=""
 			## RETURN STRING
-			echo "$branch$symbol"
+			echo "$branch$symbol$tag"
 		fi
 	fi
 	## DEFAULT
@@ -812,12 +839,12 @@ prompt_command_hook()
 	local elements=(${SSP_ELEMENTS[@]})
 	local user=$USER
 	local host=$HOSTNAME
-	local path="$(shortenPath "$PWD" $SSP_MAX_PWD_CHAR)" # bash-tools::shortenPath
+	local path="$(shortenPath "$PWD" $SSP_MAX_PWD_CHAR $SSP_PWD_TRUNC_SYMBOL)" # bash-tools::shortenPath
 	local git_branch="$(getGitBranch)"
 	local pyenv="$(getPyenv)"
 	local kube="$(getKube)"
 	local tf="$(getTerraform)"
-	local clock="$(date +"%H:%M")"
+	local clock="$(date +"${SSP_CLOCK_FORMAT}")"
 	## ADAPT DYNAMICALLY ELEMENTS TO BE SHOWN
 	## Check if elements such as GIT and the Python environment should be
 	## shown and adapt the variables as needed. This usually implies removing
@@ -851,7 +878,7 @@ prompt_command_hook()
 	## INPUT formatting.
 	## Notice that this reuses the PS1 variables over and over again, and appends
 	## all extra formatting elements to the end of it.
-	PS1="${titlebar}${SSP_VERTICAL_PADDING}"
+	PS1="${titlebar}${SSP_VERTICAL_PADDING}${SSP_NEW_LINE_LINK_TOP}"
 	while [ "${#elements[@]}" -gt 1 ]; do
 		local current=${elements[0]}
 		local next=${elements[1]}
@@ -863,7 +890,10 @@ prompt_command_hook()
 	local input_bg=${input_colors[1]}
 	local input_effect=${input_colors[2]}
 	local input_format="\[$(getFormatCode -c $input_color -b $input_bg -e $input_effect)\]"
-	PS1="$PS1 $input_format"
+	local command_start_symbol="${input_format}${SSP_BASH_SYMBOL}"
+	## the prompt is then the prompt we build above, the separation between prompt and command and in
+	## the case of a new line inbetween, the corresponding link and $ symbol to start the command.
+	PS1="${PS1}${SSP_PROMPT_COMM_SEP}${SSP_NEW_LINE_LINK_BOTTOM}${command_start_symbol} $input_format"
 	## Once this point is reached, PS1 is formatted and set. The terminal session
 	## will then use that variable to prompt the user :)
 }
@@ -887,6 +917,18 @@ prompt_command_hook()
 	else
 		local vertical_padding=""
 	fi
+	## NEW LINE
+	if $enable_command_on_new_line; then
+		local new_line_link_top="╭"
+		local new_line_link_bottom="╰"
+		local prompt_command_separation="\n"
+		local bash_symbol="\$"
+	else
+		local new_line_link_top=""
+		local new_line_link_top=""
+		local prompt_command_separation=""
+		local bash_symbol=""
+	fi
     ## CONFIG FOR "prompt_command_hook()"
 	SSP_ELEMENTS=($format "INPUT") # Append INPUT to elements that have to be shown
 	SSP_COLORS_USER=($font_color_user $background_user $texteffect_user)
@@ -899,7 +941,12 @@ prompt_command_hook()
 	SSP_COLORS_CLOCK=($font_color_clock $background_clock $texteffect_clock)
 	SSP_COLORS_INPUT=($font_color_input $background_input $texteffect_input)
 	SSP_VERTICAL_PADDING=$vertical_padding
-	SSP_MAX_PWD_CHAR=${max_pwd_char:-20}
+	SSP_NEW_LINE_LINK_TOP=$new_line_link_top
+	SSP_NEW_LINE_LINK_BOTTOM=$new_line_link_bottom
+	SSP_PROMPT_COMM_SEP=$prompt_command_separation
+	SSP_BASH_SYMBOL=$bash_symbol
+	SSP_MAX_PWD_CHAR=${max_pwd_char:-25}
+	SSP_PWD_TRUNC_SYMBOL=${pwd_trunc_symbol:-"..."}
 	SSP_GIT_SYNCED=$git_symbol_synced
 	SSP_GIT_AHEAD=$git_symbol_unpushed
 	SSP_GIT_BEHIND=$git_symbol_unpulled
@@ -909,6 +956,7 @@ prompt_command_hook()
 	SSP_GIT_DIRTY_BEHIND=$git_symbol_dirty_unpulled
 	SSP_GIT_DIRTY_DIVERGED=$git_symbol_dirty_unpushedunpulled
 	SSP_GIT_UPDATE_PERIOD_MINUTES=$git_update_period_minutes
+	SSP_CLOCK_FORMAT=${clock_format:-"%H:%M"}
 	## For terminal line coloring, leaving the rest standard
 	none="$(tput sgr0)"
 	trap 'echo -ne "${none}"' DEBUG

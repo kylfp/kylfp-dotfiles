@@ -1,0 +1,161 @@
+configuration {
+  display-drun: "Applications: ";
+  display-run: "Run: ";
+  display-window: "Windows: ";
+  drun-display-format: "{icon} {name}";
+  window-display-format: "{icon} {workspace} {name}";
+
+  font: "Iosevka Nerd Font Bold 10";
+  modi: "drun,window,run";
+  show-icons: true;
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #121212;
+  bg2: #191919;
+  bg3: #2a2a2a;
+  bg4: #414141;
+
+  fg: #c8c8c8;
+  fg2: #bebebe;
+  fg3: #aaaaaa;
+  fg4: #969696;
+
+  black: #302e31;
+  red: #a55377;
+  green: #5f9a6c;
+  yellow: #d9c793;
+  orange: #cc9964;
+  blue: #2f88ff;
+  magenta: #8853c7;
+  cyan: #6dabd6;
+  white: #dcefff;
+
+  darkblack: #211f21;
+  darkred: #7b3e59;
+  darkgreen: #798347;
+  darkyellow: #ae9f76;
+  darkorange: #cc873f;
+  darkblue: #3f6cad;
+  darkmagenta: #553976;
+  darkcyan: #416680;
+  darkwhite: #afc4e3;
+
+  text-style: bold;
+}
+
+window {
+  background-color: @bg;
+  border: 3px;
+  border-color: @blue;
+  width: 30%;
+  height: 40%;
+}
+
+overlay {
+  background-color: @bg;
+}
+
+mainbox {
+  children: [inputbar, listview, mode-switcher];
+  background-color: @bg;
+  padding: 30px;
+}
+
+// ######################################################################### //
+// Input Bar
+inputbar {
+  children: [prompt, entry];
+  background-color: @bg2;
+  text-color: @fg;
+  padding: 10px;
+  border: 3px;
+  border-color: @fg;
+}
+
+prompt {
+  background-color: @bg2;
+  text-color: @magenta;
+  font: "Iosevka Nerd Font Bold 12";
+}
+
+// Typing Area
+entry {
+  background-color: @bg2;
+  text-color: @fg;
+  font: "Iosevka Nerd Font Bold 12";
+}
+
+// ######################################################################### //
+//List
+listview {
+  children: [element];
+  background-color: @bg;
+  lines: 10;
+  columns: 5;
+  layout: vertical;
+  margin: 10;
+}
+
+// List Elements
+element {
+  orientation: vertical;
+  children: [element-icon, element-text];
+  spacing: 10px;
+  padding: 10px;
+  background-color: @bg;
+}
+
+element selected {
+  background-color: @bg2;
+  text-color: @fg;
+  border: 3px;
+  border-color: @fg;
+}
+
+// List Icons
+element-icon {
+  background-color: @bg;
+  size: 32px;
+}
+
+element-icon selected {
+  background-color: @bg2;
+  text-color: @fg;
+}
+
+// List Text
+element-text {
+  text-color: @fg;
+  background-color: @bg;
+  horizontal-align: 0.5;
+}
+
+element-text selected {
+  background-color: @bg2;
+  text-color: @magenta;
+}
+
+// ######################################################################### //
+//Mode Switcher
+mode-switcher {
+  children: [button];
+  background-color: @bg;
+}
+
+button {
+  background-color: @bg;
+  text-color: @fg;
+  padding: 5px;
+  margin: 2px;
+  font: "Iosevka Nerd Font Bold 10";
+}
+
+button selected {
+  background-color: @bg2;
+  text-color: @magenta;
+  border: 3px;
+  border-color: @fg;
+}

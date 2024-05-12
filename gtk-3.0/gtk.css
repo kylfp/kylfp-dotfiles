@@ -1,0 +1,120 @@
+/* PANEL */
+.xfce4-panel {
+  color: #1f2329;
+  background-color: #1f2329;
+}
+
+/* WINDOW ICON */
+#windowmenu-11 #windowmenu-button {
+  color: #a0a8b7;
+  background-color: #323641;
+  border-radius: 5px;
+  padding: 0px 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* WORKSPACE WIDGET */
+#pager-1 .horizontal {
+  color: #a0a8b7;
+  background-color: #323641;
+  border-radius: 5px;
+  padding: 0px 12px;
+  padding-left: 7px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#pager-1 .toggle:checked {
+  color: #e2b86b;
+  background-color: #323641;
+  border-radius: 3px;
+}
+
+/* DATE TIME WIDGET */
+#genmon-16 .genmon_plugin {
+  color: #e55561;
+  background-color: #323641;
+  border-radius: 5px;
+  padding: 0px 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* LAUNCHER WIDGET */
+#launcher-2 .horizontal {
+  color: #e55561;
+  background-color: #323641;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* SCREENSHOT */
+#screenshooter-20 .flat {
+  background-color: #323641;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* NOTIFICATION WIDGET */
+#xfce4-notification-plugin {
+  color: #e55561;
+  background-color: #323641;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* AUDIO WIDGET */
+#pulseaudio-button {
+  color: #e2b86b;
+  background-color: #323641;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* POWER WIDGET */
+#xfce4-power-manager-plugin {
+  color: #8ebd6b;
+  background-color: #323641;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* SHUTDOWN WIDGET */
+#actions-3 .flat {
+  color: #4fa6ed;
+  background-color: #323641;
+  border-radius: 5px;
+  padding-left: 9px;
+  padding-right: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* TRAY WIDGET */
+#systray-22 .toggle {
+  color: #bf68d9;
+  background-color: #323641;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  /* padding-right: 5px; */
+  padding-left: 35px;
+  -gtk-icon-transform: scale(1.8);
+}
+
+#sn-button-box image {
+  /* color: #cc9057; */
+  color: #e55561;
+  background-color: #323641;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,75 @@
+format = """
+$time\
+[  ](bold #F7C06A)\
+$os\
+[  ](bold #5CC6D1)\
+$directory\
+[  ](bold #F77067)\
+$git_branch\
+$git_status\
+$character\
+"""
+
+right_format = """
+$time\
+"""
+
+[os]
+disabled = false
+style = "bold fg:#5CC6D1"
+format = '[$symbol$name]($style)'
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+openSUSE = " "
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[directory]
+style = "bold fg:#F77067"
+format = '[  $path]($style)'
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+".config" = " "
+"~" = "./ "
+
+[git_branch]
+symbol = ""
+style = "blink bold fg:#CB75F7"
+format = '[$symbol $branch ]($style)'
+
+[git_status]
+style = "blink bold fg:#CB75F7"
+format = '[$all_status$ahead_behind  ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bold fg:#F7C06A"
+format = '[ 󱑂 $time]($style)'
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:#2AACAA)'
+error_symbol = '[](bold fg:#FD3762)'
